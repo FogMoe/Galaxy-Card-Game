@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -34,26 +34,27 @@ public class CardDisplay : MonoBehaviour
     public void ShowCard()
     {     
         nameText.text = card.cardName;
-        rarityColor.color = new Color(255, 255, 255, 255); //Ôİ¶¨µ¥Ï¡ÓĞ¶È
+        rarityColor.color = new Color(255, 255, 255, 255); //æš‚å®šå•ç¨€æœ‰åº¦
         idText.text = card.id.ToString();
-        costResourceText.text = "ÏûºÄ£º" + card.cost.ToString() + "ÄÜÁ¿Öµ";
+        costResourceText.text = "æ¶ˆè€—ï¼š" + card.cost.ToString() + "èƒ½é‡å€¼";
         if(card is FleetCard)
         {
             var fleet = card as FleetCard;
             attackText.text = fleet.attack.ToString();
             healthText.text = fleet.health.ToString();
-            constantText.text = "Î¬»¤·Ñ£º" + fleet.constantCost.ToString() + "ÄÜÁ¿Öµ/»ØºÏ";
+            constantText.text = "ç»´æŠ¤è´¹ï¼š" + fleet.constantCost.ToString() + "èƒ½é‡å€¼/å›åˆ";
             effectDescriptionText.text = fleet.effect;
+            typeText.text = "èˆ°é˜Ÿå¡";
             switch (fleet.weapon)
             {
                 case 0:
-                    weaponText.text = "ÄÜÁ¿ÎäÆ÷";
+                    weaponText.text = "èƒ½é‡æ­¦å™¨";
                     break;
                 case 1:
-                    weaponText.text = "¶¯ÄÜÎäÆ÷";
+                    weaponText.text = "åŠ¨èƒ½æ­¦å™¨";
                     break;
                 case 2:
-                    weaponText.text = "µ¼µ¯ÎäÆ÷";
+                    weaponText.text = "å¯¼å¼¹æ­¦å™¨";
                     break;
             }
         }
@@ -62,10 +63,31 @@ public class CardDisplay : MonoBehaviour
             var basic = card as BasicCard;
             effectDescriptionText.text = basic.effect;
             healthText.text = basic.health.ToString();
-            constantText.text = "Ìá¹©£º" + basic.constantGain.ToString() + "ÄÜÁ¿Öµ/»ØºÏ";
+            constantText.text = "æä¾›ï¼š" + basic.constantGain.ToString() + "èƒ½é‡å€¼/å›åˆ";
+            typeText.text = "åŸºç¡€å¡";
             attackText.gameObject.SetActive(false);
             weaponText.gameObject.SetActive(false);
         }
-        
+        else if(card is BuffCard)
+        {
+            var buff = card as BuffCard;
+            typeText.text = "å¢ç›Šå¡";
+            effectDescriptionText.text = buff.effect;
+            attackText.gameObject.SetActive(false);
+            weaponText.gameObject.SetActive(false);
+            healthText.gameObject.SetActive(false);
+            constantText.gameObject.SetActive(false);            
+        }
+        else if (card is BattleCard)
+        {
+            var battle = card as BattleCard;
+            typeText.text = "æˆ˜æ–—å¡";
+            effectDescriptionText.text = battle.effect;
+            attackText.gameObject.SetActive(false);
+            weaponText.gameObject.SetActive(false);
+            healthText.gameObject.SetActive(false);
+            constantText.gameObject.SetActive(false);
+        }
+
     }
 }

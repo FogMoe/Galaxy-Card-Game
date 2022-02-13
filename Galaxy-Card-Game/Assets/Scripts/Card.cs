@@ -1,25 +1,27 @@
-public class Card
+ï»¿public class Card //å¡
 {
+    public string type;
     public int id;
     public string cardName;
     public int cost;
-    public int rarity; //0=Normal(°×É«45%) ,1=Rare(À¶É«30%) £¬2=Epic(×ÏÉ«18%) £¬3=Legendary(³ÈÉ«6%) £¬4=Unique(ºìÉ«1%)
-    public Card(int _id, string _cardName,int _cost, int _rarity)
+    public int rarity; //0=Normal(ç™½è‰²45%) ,1=Rare(è“è‰²30%) ï¼Œ2=Epic(ç´«è‰²18%) ï¼Œ3=Legendary(æ©™è‰²6%) ï¼Œ4=Unique(çº¢è‰²1%)
+    public Card(int _id, string _cardName,int _cost, int _rarity, string _type)
     {
         this.id = _id;
         this.cardName = _cardName;
         this.cost = _cost;
         this.rarity = _rarity;
+        this.type = _type;
     }
 }
-public class FleetCard: Card
+public class FleetCard: Card //èˆ°é˜Ÿå¡
 {
     public int constantCost;
     public int health;
     public int attack;
-    public int weapon; // 0=ÄÜÁ¿ÎäÆ÷ ,1=¶¯ÄÜÎäÆ÷ ,2=µ¼µ¯ÎäÆ÷
+    public int weapon; // 0=èƒ½é‡æ­¦å™¨ ,1=åŠ¨èƒ½æ­¦å™¨ ,2=å¯¼å¼¹æ­¦å™¨
     public string effect;
-    public FleetCard(string _effect, int _constantCost, int _health, int _attack, int _weapon, int _id, string _cardName, int _cost, int _rarity) : base(_id, _cardName, _cost, _rarity)
+    public FleetCard(string _effect, int _constantCost, int _health, int _attack, int _weapon, int _id, string _cardName, int _cost, int _rarity, string _type) : base(_id, _cardName, _cost, _rarity, _type)
     {
         this.constantCost = _constantCost;
         this.health = _health;
@@ -28,15 +30,33 @@ public class FleetCard: Card
         this.effect = _effect;
     }
 }
-public class BasicCard: Card
+public class BasicCard: Card //åŸºç¡€å¡
 {
     public int constantGain;
     public int health;
     public string effect;
-    public BasicCard(int _consconstantGain, int _health, string _effect, int _id, string _cardName, int _cost, int _rarity) : base(_id, _cardName, _cost, _rarity)
+    public BasicCard(int _consconstantGain, int _health, string _effect, int _id, string _cardName, int _cost, int _rarity, string _type) : base(_id, _cardName, _cost, _rarity, _type)
     {
         this.constantGain = _consconstantGain;
         this.health = _health;
+        this.effect = _effect;
+    }
+}
+
+public class BuffCard : Card //å¢ç›Šå¡
+{
+    public string effect;
+    public BuffCard(string _effect, int _id, string _cardName, int _cost, int _rarity, string _type) : base(_id, _cardName, _cost, _rarity, _type)
+    {
+        this.effect = _effect;
+    }
+}
+
+public class BattleCard : Card //æˆ˜æ–—å¡
+{
+    public string effect;
+    public BattleCard(string _effect, int _id, string _cardName, int _cost, int _rarity, string _type) : base(_id, _cardName, _cost, _rarity, _type)
+    {
         this.effect = _effect;
     }
 }
