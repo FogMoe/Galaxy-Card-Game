@@ -36,13 +36,13 @@ public class CardDisplay : MonoBehaviour
         nameText.text = card.cardName;
         rarityColor.color = new Color(255, 255, 255, 255); //暂定单稀有度
         idText.text = card.id.ToString();
-        costResourceText.text = "消耗：" + card.cost.ToString() + "能量值";
+        costResourceText.text = "消耗:" + card.cost.ToString() + "能量值";
         if(card is FleetCard)
         {
             var fleet = card as FleetCard;
-            attackText.text = fleet.attack.ToString();
-            healthText.text = fleet.health.ToString();
-            constantText.text = "维护费：" + fleet.constantCost.ToString() + "能量值/回合";
+            attackText.text = "攻击力:" + fleet.attack.ToString();
+            healthText.text = "生命值:" + fleet.health.ToString();
+            constantText.text = "维护费:" + fleet.constantCost.ToString() + "能量值/回合";
             effectDescriptionText.text = fleet.effect;
             typeText.text = "舰队卡";
             switch (fleet.weapon)
@@ -62,8 +62,8 @@ public class CardDisplay : MonoBehaviour
         {
             var basic = card as BasicCard;
             effectDescriptionText.text = basic.effect;
-            healthText.text = basic.health.ToString();
-            constantText.text = "提供：" + basic.constantGain.ToString() + "能量值/回合";
+            healthText.text = "生命值:" + basic.health.ToString();
+            constantText.text = "提供:" + basic.constantGain.ToString() + "能量值/回合";
             typeText.text = "基础卡";
             attackText.gameObject.SetActive(false);
             weaponText.gameObject.SetActive(false);

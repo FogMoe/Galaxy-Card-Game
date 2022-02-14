@@ -1,2 +1,5 @@
 ﻿Type(类型),Id(编号),Name(卡名),Rarity(稀有度),Cost(消耗),Effect(效果),Constant(持续),Health(生命值),Attack(攻击力),Weapon(武器)
 FleetCard,10001,测试护卫舰,0,5000,无,500,1000,1000,0
+BasicCard,10002,测试发电机,0,0,无,500,300,#,#
+BattleCard,10003,测试核弹,0,0,无,#,#,#,#
+BuffCard,10004,测试采矿,0,0,无,#,#,#,#

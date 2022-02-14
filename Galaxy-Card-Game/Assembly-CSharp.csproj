@@ -49,8 +49,9 @@
   <ItemGroup>
      <Compile Include="Assets\Assets\Fonts\Script\scriptTexttest.cs" />
      <Compile Include="Assets\Scripts\CardDisplay.cs" />
-     <Compile Include="Assets\Scripts\Card.cs" />
      <Compile Include="Assets\Scripts\CardStore.cs" />
+     <Compile Include="Assets\Scripts\Card.cs" />
+     <Compile Include="Assets\Scripts\OpenCardPackage.cs" />
      <None Include="Assets\Assets\Fonts\Documentation\JazzCreateAltKeys_BubbleFont.txt" />
      <None Include="Assets\Assets\Fonts\Documentation\JazzCreateBubble_VersionHistory_1.1.txt" />
  <Reference Include="UnityEngine">
