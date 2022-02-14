@@ -40,6 +40,7 @@ public class CardDisplay : MonoBehaviour
         if(card is FleetCard)
         {
             var fleet = card as FleetCard;
+            backgroundImage.sprite = Resources.Load("Pics/fleet", typeof(Sprite)) as Sprite;
             attackText.text = "攻击力:" + fleet.attack.ToString();
             healthText.text = "生命值:" + fleet.health.ToString();
             constantText.text = "维护费:" + fleet.constantCost.ToString() + "能量值/回合";
@@ -61,6 +62,7 @@ public class CardDisplay : MonoBehaviour
         else if(card is BasicCard)
         {
             var basic = card as BasicCard;
+            backgroundImage.sprite = Resources.Load("Pics/basic", typeof(Sprite)) as Sprite;
             effectDescriptionText.text = basic.effect;
             healthText.text = "生命值:" + basic.health.ToString();
             constantText.text = "提供:" + basic.constantGain.ToString() + "能量值/回合";
@@ -71,6 +73,7 @@ public class CardDisplay : MonoBehaviour
         else if(card is BuffCard)
         {
             var buff = card as BuffCard;
+            backgroundImage.sprite = Resources.Load("Pics/buff", typeof(Sprite)) as Sprite;
             typeText.text = "增益卡";
             effectDescriptionText.text = buff.effect;
             attackText.gameObject.SetActive(false);
@@ -81,6 +84,7 @@ public class CardDisplay : MonoBehaviour
         else if (card is BattleCard)
         {
             var battle = card as BattleCard;
+            backgroundImage.sprite = Resources.Load("Pics/battle", typeof(Sprite)) as Sprite;
             typeText.text = "战斗卡";
             effectDescriptionText.text = battle.effect;
             attackText.gameObject.SetActive(false);
