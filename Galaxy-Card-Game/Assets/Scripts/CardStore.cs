@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,8 +9,8 @@ public class CardStore : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        LoadCardData();
-        //TestLoad();  //²âÊÔËùÓĞ¿¨µÄ¼ÓÔØ×´Ì¬
+        //LoadCardData();
+        //TestLoad();  //æµ‹è¯•æ‰€æœ‰å¡çš„åŠ è½½çŠ¶æ€
     }
 
     // Update is called once per frame
@@ -24,13 +24,13 @@ public class CardStore : MonoBehaviour
         foreach (var row in dataRow)
         {
             string[] rowArray = row.Split(',');
-            if (rowArray[0] == "Type(ÀàĞÍ)")
+            if (rowArray[0] == "Type(ç±»å‹)")
             {
                 continue;
             }
             else if (rowArray[0] == "FleetCard")
             {
-                //ĞÂ½¨½¢¶Ó¿¨
+                //æ–°å»ºèˆ°é˜Ÿå¡
                 int id = int.Parse(rowArray[1]);
                 string cardName = rowArray[2];
                 int rarity = int.Parse(rowArray[3]);
@@ -40,14 +40,14 @@ public class CardStore : MonoBehaviour
                 int health = int.Parse(rowArray[7]);
                 int attack = int.Parse(rowArray[8]);
                 int weapon = int.Parse(rowArray[9]);
-                string type = "½¢¶Ó¿¨";
+                string type = "èˆ°é˜Ÿå¡";
                 FleetCard fleetCard = new FleetCard(effect,constantCost,health,attack,weapon,id,cardName,cost,rarity,type);
                 cardList.Add(fleetCard);
                 
             }
             else if (rowArray[0] == "BasicCard")
             {
-                //ĞÂ½¨»ù´¡¿¨
+                //æ–°å»ºåŸºç¡€å¡
                 int id = int.Parse(rowArray[1]);
                 string cardName = rowArray[2];
                 int rarity = int.Parse(rowArray[3]);
@@ -55,32 +55,32 @@ public class CardStore : MonoBehaviour
                 string effect = rowArray[5];
                 int constantGain = int.Parse(rowArray[6]);
                 int health = int.Parse(rowArray[7]);
-                string type = "»ù´¡¿¨";
+                string type = "åŸºç¡€å¡";
                 BasicCard basicCard = new BasicCard(constantGain, health, effect, id, cardName, cost, rarity, type);
                 cardList.Add(basicCard);
             }
             else if (rowArray[0] == "BuffCard")
             {
-                //ĞÂ½¨ÔöÒæ¿¨
+                //æ–°å»ºå¢ç›Šå¡
                 int id = int.Parse(rowArray[1]);
                 string cardName = rowArray[2];
                 int rarity = int.Parse(rowArray[3]);
                 int cost = int.Parse(rowArray[4]);
                 string effect = rowArray[5];
-                string type = "ÔöÒæ¿¨";
+                string type = "å¢ç›Šå¡";
                 BuffCard buffCard = new BuffCard(effect, id, cardName, cost, rarity, type);
                 cardList.Add(buffCard);
 
             }
             else if (rowArray[0] == "BattleCard")
             {
-                //ĞÂ½¨Õ½¶·¿¨
+                //æ–°å»ºæˆ˜æ–—å¡
                 int id = int.Parse(rowArray[1]);
                 string cardName = rowArray[2];
                 int rarity = int.Parse(rowArray[3]);
                 int cost = int.Parse(rowArray[4]);
                 string effect = rowArray[5];
-                string type = "Õ½¶·¿¨";
+                string type = "æˆ˜æ–—å¡";
                 BattleCard battleCard = new BattleCard(effect, id, cardName, cost, rarity, type);
                 cardList.Add(battleCard);
 
@@ -91,13 +91,13 @@ public class CardStore : MonoBehaviour
     {
         foreach (var item in cardList)
         {
-            Debug.Log("ÒÑ¼ÓÔØ¿¨ÅÆ£º" + item.id.ToString() + item.cardName);
+            Debug.Log("å·²åŠ è½½å¡ç‰Œï¼š" + item.id.ToString() + item.cardName);
         }
     }*/
 
     public Card RandomCard()
     {
-        //°´Ï¡ÓĞ¶È¸ÅÂÊËæ»úÒ»ÕÅ¿¨[0=Normal(°×É«45%) ,1=Rare(À¶É«30%) £¬2=Epic(×ÏÉ«18%) £¬3=Legendary(³ÈÉ«6%) £¬4=Unique(ºìÉ«1%)]
+        //æŒ‰ç¨€æœ‰åº¦æ¦‚ç‡éšæœºä¸€å¼ å¡[0=Normal(ç™½è‰²45%) ,1=Rare(è“è‰²30%) ï¼Œ2=Epic(ç´«è‰²18%) ï¼Œ3=Legendary(æ©™è‰²6%) ï¼Œ4=Unique(çº¢è‰²1%)]
         int randomNumber = Random.Range(0, 99);
 
         List<Card> normalCard = new List<Card>();
@@ -151,7 +151,7 @@ public class CardStore : MonoBehaviour
         }*/
         else
         {
-            Debug.Log("³é¿¨¸ÅÂÊ¼ÆËã·¢Éú´íÎó£¡" );
+            Debug.Log("æŠ½å¡æ¦‚ç‡è®¡ç®—å‘ç”Ÿé”™è¯¯ï¼" );
             card = null;
         }
         return card;

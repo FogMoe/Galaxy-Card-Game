@@ -1,0 +1,2 @@
+E:\GitHub\Galaxy-Card-Game\Galaxy-Card-Game\obj\Debug\Assembly-CSharp.csproj.AssemblyReference.cache
+E:\GitHub\Galaxy-Card-Game\Galaxy-Card-Game\obj\Debug\Assembly-CSharp.csproj.CoreCompileInputs.cache

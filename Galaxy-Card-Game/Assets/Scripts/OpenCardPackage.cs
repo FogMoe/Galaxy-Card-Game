@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,6 +8,8 @@ public class OpenCardPackage : MonoBehaviour
     public GameObject cardPool;
     CardStore CardStore;
     List<GameObject> cards = new List<GameObject>();
+
+    public PlayerData PlayerData;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,8 +23,18 @@ public class OpenCardPackage : MonoBehaviour
     }
     public void earthCardPackOnClickOpen()
     {
+        if (PlayerData.playerCoins < 9600)
+        {
+            //æç¤ºé’±ä¸å¤Ÿæ— æ³•æŠ½å¡
+            return;
+        }
+        else
+        {
+            PlayerData.playerCoins -= 9600;
+        }
+
         ClearPool();
-        //È«¿¨°ü³é¿¨°´Å¥±»µã»÷
+        //å…¨å¡åŒ…æŠ½å¡æŒ‰é’®è¢«ç‚¹å‡»
         for (int i = 0; i < 2; i++)
         {
             GameObject newCard = GameObject.Instantiate(earthCardPack,cardPool.transform);
@@ -30,6 +42,8 @@ public class OpenCardPackage : MonoBehaviour
             newCard.GetComponent<CardDisplay>().card = CardStore.RandomCard();
             cards.Add(newCard);
         }
+        SaveCardData();
+        PlayerData.SavePlayerData();
     }
 
     public void ClearPool()
@@ -39,5 +53,14 @@ public class OpenCardPackage : MonoBehaviour
             Destroy(card);
         }
         cards.Clear();
+    }
+
+    public void SaveCardData()
+    {
+        foreach (var card in cards)
+        {
+            int id = card.GetComponent<CardDisplay>().card.id;
+            PlayerData.playerCards[id-10000] += 1;
+        }
     }
 }
