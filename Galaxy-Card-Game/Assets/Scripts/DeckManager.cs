@@ -40,10 +40,7 @@ public class DeckManager : MonoBehaviour
         {
             if (PlayerData.playerCards[i] > 0)
             {
-                GameObject newCard = Instantiate(cardPrefab,libraryPanel);
-                newCard.GetComponent<CardCounter>().counter.text = PlayerData.playerCards[i].ToString();
-                newCard.GetComponent<CardDisplay>().card = CardStore.cardList[i];
-                libraryDic.Add(i + 10000, newCard);
+                CreateCard(i, CardState.Library);
             }
         }
     }
@@ -54,11 +51,9 @@ public class DeckManager : MonoBehaviour
         {
             if (PlayerData.playerDeck[i] > 0)
             {
-                GameObject newCard = Instantiate(deckPrefab,deckPanel);
-                newCard.GetComponent<CardCounter>().counter.text = PlayerData.playerDeck[i].ToString();
-                newCard.GetComponent<CardDisplay>().card = CardStore.cardList[i];
-                deckDic.Add(i + 10000, newCard);
-                
+                CreateCard(i, CardState.Deck);
+
+
             }
         }
     }
@@ -67,11 +62,61 @@ public class DeckManager : MonoBehaviour
     {
         if (_state == CardState.Deck)
         {
+            PlayerData.playerDeck[_id]--;
+            PlayerData.playerCards[_id]++;
+
+            deckDic[_id].GetComponent<CardCounter>().SetCounterValue(-1);
+            if (libraryDic.ContainsKey(_id))
+            {
+                libraryDic[_id].GetComponent<CardCounter>().SetCounterValue(1);
+            }
+            else
+            {
+                CreateCard(_id, CardState.Library);
+            }
 
         }
         else if (_state == CardState.Library)
         {
+            PlayerData.playerDeck[_id]++;
+            PlayerData.playerCards[_id]--;
 
+
+            if (deckDic.ContainsKey(_id))
+            {
+                deckDic[_id].GetComponent<CardCounter>().SetCounterValue(1);
+            }
+            else
+            {
+                CreateCard(_id, CardState.Deck);
+            }
+            libraryDic[_id].GetComponent<CardCounter>().SetCounterValue(-1);
         }
+    }
+
+    public void CreateCard(int _id, CardState _cardState)
+    {
+        Transform targetPanel;
+        GameObject targetPrefab;
+        var refData = PlayerData.playerCards;
+        Dictionary<int, GameObject> targetDic = libraryDic;
+        if (_cardState == CardState.Library)
+        {
+            targetPanel = libraryPanel;
+
+            targetPrefab = cardPrefab;
+        }
+        else 
+        {
+            targetPanel = deckPanel;
+            targetPrefab = deckPrefab;
+            refData = PlayerData.playerDeck;
+            targetDic = deckDic;
+        }   
+
+        GameObject newCard = Instantiate(targetPrefab, targetPanel);
+        newCard.GetComponent<CardCounter>().SetCounterValue(refData[_id]);
+        newCard.GetComponent<CardDisplay>().card = CardStore.cardList[_id];
+        targetDic.Add(_id, newCard);
     }
 }

@@ -43,13 +43,13 @@ public class PlayerData : MonoBehaviour
             }
             else if (rowArray[0] == "OwnCards")
             {
-                int id = int.Parse(rowArray[1]) - 10000;
+                int id = int.Parse(rowArray[1]);
                 int amouts = int.Parse(rowArray[2]);
                 playerCards[id] = amouts;
             }
             else if (rowArray[0] == "Deck")
             {
-                int id = int.Parse(rowArray[1]) - 10000;
+                int id = int.Parse(rowArray[1]);
                 int amouts = int.Parse(rowArray[2]);
                 playerDeck[id] = amouts;
             }
@@ -70,7 +70,7 @@ public class PlayerData : MonoBehaviour
             if (playerCards[i] != 0)
             {
                 //存储持有的卡和持有卡的数量
-                int ex = i + 10000;
+                int ex = i;
                 datas.Add("OwnCards," + ex.ToString() + "," + playerCards[i].ToString());
             }           
         }
@@ -80,7 +80,7 @@ public class PlayerData : MonoBehaviour
             if (playerDeck[i] != 0)
             {
                 
-                int ex = i + 10000;
+                int ex = i;
                 datas.Add("Deck," + ex.ToString() + "," + playerDeck[i].ToString());
             }
         }

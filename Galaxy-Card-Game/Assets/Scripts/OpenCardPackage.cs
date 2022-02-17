@@ -60,7 +60,7 @@ public class OpenCardPackage : MonoBehaviour
         foreach (var card in cards)
         {
             int id = card.GetComponent<CardDisplay>().card.id;
-            PlayerData.playerCards[id-10000] += 1;
+            PlayerData.playerCards[id] += 1;
         }
     }
 }

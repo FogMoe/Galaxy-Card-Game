@@ -952,6 +952,7 @@ GameObject:
   - component: {fileID: 7289726477979359916}
   - component: {fileID: 2815876972775049219}
   - component: {fileID: -5327281815446190788}
+  - component: {fileID: 4625056818363965046}
   m_Layer: 5
   m_Name: DeckCard
   m_TagString: Untagged
@@ -1041,6 +1042,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   zoomSize: 1.1
+--- !u!114 &4625056818363965046
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7289726477979359918}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3506d7d560240e348b83064340a890fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  state: 1
 --- !u!1 &7289726478083167443
 GameObject:
   m_ObjectHideFlags: 0
